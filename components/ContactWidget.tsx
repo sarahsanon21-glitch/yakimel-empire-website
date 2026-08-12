@@ -40,7 +40,7 @@ export default function ContactWidget() {
 
       setTicketNumber(data.ticketNumber);
       setStatus("sent");
-    } catch (err) {
+    } catch {
       setStatus("error");
     }
   }
