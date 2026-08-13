@@ -10,7 +10,7 @@ export default function Footer() {
         </div>
 
         <div className="font-mono text-xs">
-          USA, New York
+          Garnerville, New York
         </div>
 
         <div className="font-mono text-xs">
