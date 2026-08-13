@@ -8,7 +8,6 @@ export default function Hero() {
 
       <div className="relative mx-auto max-w-6xl">
         <p className="font-mono text-xs uppercase tracking-widest text-brand mb-6">
-          Solo Built. Multi Product.
         </p>
 
         <h1 className="font-display font-bold text-5xl md:text-7xl leading-tight max-w-3xl text-ink-invert">
