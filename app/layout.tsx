@@ -23,11 +23,10 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Yakimel Empire | Solo-Built. Multi-Product.",
+  title: "Yakimel Empire LLC | Technology. Innovation. Future.",
   description:
-    "Yakimel Empire LLC builds and operates a portfolio of SaaS and marketplace products, end-to-end, from a single desk in USA, New York.",
+    "Yakimel Empire LLC builds and operates a portfolio of SaaS and marketplace products, end-to-end, from a single desk in Garnerville, New York.",
 };
-
 export default function RootLayout({
   children,
 }: {
