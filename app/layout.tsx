@@ -34,7 +34,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
-      <body className="font-body bg-bg text-ink antialiased min-h-full">
+      <body className="font-body bg-bg text-ink antialiased min-h-full" suppressHydrationWarning>
         <Nav />
         {children}
         <Footer />

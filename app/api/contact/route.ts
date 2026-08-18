@@ -9,7 +9,11 @@ function generateTicketNumber() {
 
 export async function POST(request: Request) {
   try {
-    const { name, email, message } = await request.json();
+    const { name, email, message, website } = await request.json();
+
+    if (website) {
+      return NextResponse.json({ success: true, ticketNumber: "N/A" });
+    }
 
     if (!name || !email || !message) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
@@ -25,7 +29,6 @@ export async function POST(request: Request) {
       },
     });
 
-    // Email to Yakimel Empire team
     await transporter.sendMail({
       from: `"Yakimel Empire Website" <${process.env.GMAIL_USER}>`,
       to: process.env.GMAIL_USER,
@@ -34,7 +37,6 @@ export async function POST(request: Request) {
       text: `Ticket: ${ticketNumber}\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
     });
 
-    // Auto-confirmation email to the customer
     await transporter.sendMail({
       from: `"Yakimel Empire LLC Support" <${process.env.GMAIL_USER}>`,
       to: email,

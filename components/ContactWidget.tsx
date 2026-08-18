@@ -9,6 +9,7 @@ export default function ContactWidget() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [website, setWebsite] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [ticketNumber, setTicketNumber] = useState("");
 
@@ -29,7 +30,7 @@ export default function ContactWidget() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message }),
+        body: JSON.stringify({ name, email, message, website }),
       });
 
       const data = await res.json();
@@ -40,7 +41,7 @@ export default function ContactWidget() {
 
       setTicketNumber(data.ticketNumber);
       setStatus("sent");
-    } catch {
+    } catch (err) {
       setStatus("error");
     }
   }
@@ -76,13 +77,24 @@ export default function ContactWidget() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="p-6 space-y-4">
+                <input
+                  type="text"
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  style={{ position: "absolute", left: "-9999px", width: "1px", height: "1px" }}
+                  aria-hidden="true"
+                />
+
                 <div>
                   <label className="block font-mono text-xs uppercase tracking-widest text-dim mb-1">Name</label>
                   <input
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full border border-slate-200 rounded-lg px-4 py-2 text-sm text-ink focus:outline-none focus:border-brand"
+                    style={{ color: "#0B1220" }}
+                    className="w-full border border-slate-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-brand"
                   />
                 </div>
                 <div>
@@ -92,7 +104,8 @@ export default function ContactWidget() {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full border border-slate-200 rounded-lg px-4 py-2 text-sm text-ink focus:outline-none focus:border-brand"
+                    style={{ color: "#0B1220" }}
+                    className="w-full border border-slate-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-brand"
                   />
                 </div>
                 <div>
@@ -102,7 +115,8 @@ export default function ContactWidget() {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     rows={4}
-                    className="w-full border border-slate-200 rounded-lg px-4 py-2 text-sm text-ink focus:outline-none focus:border-brand resize-none"
+                    style={{ color: "#0B1220" }}
+                    className="w-full border border-slate-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-brand resize-none"
                   />
                 </div>
 

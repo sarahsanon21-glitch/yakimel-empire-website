@@ -95,6 +95,12 @@ export default function Services() {
             </Link>
           </div>
         </div>
+
+        <div className="text-center mt-12">
+          <Link href="/eznob" className="inline-block font-mono text-xs uppercase tracking-widest text-brand hover:text-brand-dark transition-colors">
+            Learn more about EZNOB, our development department
+          </Link>
+        </div>
       </div>
     </section>
   );

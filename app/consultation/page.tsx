@@ -16,6 +16,7 @@ const projectTypes = [
 function ConsultationForm() {
   const searchParams = useSearchParams();
   const presetType = searchParams.get("type") || "";
+  const presetService = searchParams.get("service") || "";
 
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [ticketNumber, setTicketNumber] = useState("");
@@ -31,7 +32,10 @@ function ConsultationForm() {
   const [timeline, setTimeline] = useState("");
   const [description, setDescription] = useState("");
   const [existingWebsite, setExistingWebsite] = useState("");
-  const [additionalInfo, setAdditionalInfo] = useState("");
+  const [additionalInfo, setAdditionalInfo] = useState(
+    presetService ? `Regarding: ${presetService}` : ""
+  );
+  const [website, setWebsite] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -52,6 +56,7 @@ function ConsultationForm() {
           description,
           existingWebsite,
           additionalInfo,
+          website,
         }),
       });
 
@@ -85,6 +90,16 @@ function ConsultationForm() {
 
   return (
     <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 md:p-10 space-y-6 max-w-2xl mx-auto">
+      <input
+        type="text"
+        value={website}
+        onChange={(e) => setWebsite(e.target.value)}
+        tabIndex={-1}
+        autoComplete="off"
+        style={{ position: "absolute", left: "-9999px", width: "1px", height: "1px" }}
+        aria-hidden="true"
+      />
+
       <div>
         <label className="block font-mono text-xs uppercase tracking-widest text-dim mb-1">
           What would you like us to build?

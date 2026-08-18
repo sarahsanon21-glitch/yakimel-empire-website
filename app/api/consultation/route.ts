@@ -10,6 +10,11 @@ function generateTicketNumber() {
 export async function POST(request: Request) {
   try {
     const data = await request.json();
+
+    if (data.website) {
+      return NextResponse.json({ success: true, ticketNumber: "N/A" });
+    }
+
     const {
       fullName,
       companyName,
