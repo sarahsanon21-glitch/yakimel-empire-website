@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const services = [
@@ -70,14 +71,18 @@ export default function EznobPage() {
         className="relative pt-40 pb-24 px-6 bg-cover bg-center"
         style={{ backgroundImage: "url('/eznob-banner.png')" }}
       >
-        <div className="absolute inset-0 bg-bg-dark/70" />
+        <div className="absolute inset-0 bg-bg-dark/60" />
 
         <div className="relative mx-auto max-w-6xl">
           <Link href="/#services" className="font-mono text-xs uppercase tracking-widest text-brand hover:opacity-80 transition-opacity">
             Back to services
           </Link>
 
-          <p className="font-mono text-xs uppercase tracking-widest text-brand mt-10 mb-4">
+          <div className="mt-10 mb-8">
+            <Image src="/eznob-logo.png" alt="EZNOB" width={600} height={150} className="h-20 md:h-32 w-auto" />
+          </div>
+
+          <p className="font-mono text-xs uppercase tracking-widest text-brand mb-4">
             Technology Development Department
           </p>
           <h1 className="font-display font-bold text-4xl md:text-6xl mb-6 max-w-3xl text-ink-invert">
