@@ -74,12 +74,12 @@ export default function EznobPage() {
         <div className="absolute inset-0 bg-bg-dark/60" />
 
         <div className="relative mx-auto max-w-6xl">
-          <Link href="/#services" className="font-mono text-xs uppercase tracking-widest text-brand hover:opacity-80 transition-opacity">
-            Back to services
+          <Link href="/#products" className="font-mono text-xs uppercase tracking-widest text-brand hover:opacity-80 transition-opacity">
+            Back to home
           </Link>
 
           <div className="mt-10 mb-8">
-            <Image src="/eznob-logo.png" alt="EZNOB" width={600} height={150} className="h-20 md:h-32 w-auto" />
+            <Image src="/eznob-logo.png" alt="EZNOB" width={900} height={225} className="h-32 md:h-48 w-auto" />
           </div>
 
           <p className="font-mono text-xs uppercase tracking-widest text-brand mb-4">

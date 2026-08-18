@@ -23,7 +23,7 @@ export default function Nav() {
 
         <nav className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest text-dim-invert shrink-0">
           <Link href="/#products" className="hover:text-ink-invert transition-colors">Products</Link>
-          <Link href="/#services" className="hover:text-ink-invert transition-colors">Services</Link>
+          <Link href="/eznob" className="hover:text-ink-invert transition-colors">Services</Link>
           <Link href="/faq" className="hover:text-ink-invert transition-colors">FAQ</Link>
           <Link href="/#contact" className="hover:text-ink-invert transition-colors">Contact</Link>
         </nav>
@@ -67,7 +67,7 @@ export default function Nav() {
           <Link href="/#products" onClick={() => setMenuOpen(false)} className="font-mono text-xs uppercase tracking-widest text-dim-invert hover:text-ink-invert transition-colors">
             Products
           </Link>
-          <Link href="/#services" onClick={() => setMenuOpen(false)} className="font-mono text-xs uppercase tracking-widest text-dim-invert hover:text-ink-invert transition-colors">
+          <Link href="/eznob" onClick={() => setMenuOpen(false)} className="font-mono text-xs uppercase tracking-widest text-dim-invert hover:text-ink-invert transition-colors">
             Services
           </Link>
           <Link href="/faq" onClick={() => setMenuOpen(false)} className="font-mono text-xs uppercase tracking-widest text-dim-invert hover:text-ink-invert transition-colors">
