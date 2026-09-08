@@ -1,7 +1,7 @@
 "use client";
 
-import VideoScrollHero from "./hero/VideoScrollHero";
+import ImageBackgroundHero from "./hero/ImageBackgroundHero";
 
 export default function Hero() {
-  return <VideoScrollHero />;
+  return <ImageBackgroundHero />;
 }

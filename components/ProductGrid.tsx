@@ -100,7 +100,7 @@ export default function ProductGrid() {
               ease: "easeOut",
               delay: 0.15 + Math.min(i, 4) * 0.08,
             }}
-            className="w-[85vw] max-w-[340px] flex-shrink-0 snap-start rounded-2xl border border-[#1b2436] bg-[#0b0f16] p-8 transition-colors duration-300 hover:border-[#2c3a52]"
+            className="liquid-glass w-[85vw] max-w-[340px] flex-shrink-0 snap-start rounded-2xl bg-[#0b0f16]/60 backdrop-blur-md p-8 transition-all duration-300 hover:bg-[#0b0f16]/80"
           >
             <div className="flex items-center justify-between mb-4">
               <span className="font-mono text-xs uppercase tracking-widest text-[#4d8dff]">
@@ -126,7 +126,7 @@ export default function ProductGrid() {
                 Learn more
               </Link>
               {p.url && (
-               <a 
+                 <a 
                   href={p.url}
                   target="_blank"
                   rel="noopener noreferrer"

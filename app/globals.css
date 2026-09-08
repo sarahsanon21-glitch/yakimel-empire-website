@@ -32,3 +32,35 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+.liquid-glass {
+  position: relative;
+  isolation: isolate;
+}
+
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.2px;
+  background: linear-gradient(
+    160deg,
+    rgba(77, 141, 255, 0.55) 0%,
+    rgba(77, 141, 255, 0.12) 22%,
+    rgba(77, 141, 255, 0) 45%,
+    rgba(77, 141, 255, 0) 60%,
+    rgba(77, 141, 255, 0.18) 82%,
+    rgba(77, 141, 255, 0.55) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  opacity: 0.6;
+}
+
+.liquid-glass:hover::before {
+  opacity: 1;
+}
