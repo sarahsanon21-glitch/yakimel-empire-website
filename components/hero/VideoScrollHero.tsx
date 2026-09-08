@@ -28,45 +28,62 @@ export default function VideoScrollHero() {
   useLenis(reducedMotion);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video || !pinRef.current) return;
+  const video = videoRef.current;
+  if (!video || !pinRef.current) return;
 
-    // Reduced-motion: skip scroll-scrubbing entirely, just show final frame + text.
-    if (reducedMotion) {
-      video.currentTime = video.duration || 0;
-      setShowText(true);
-      return;
-    }
+  if (reducedMotion) {
+    video.currentTime = video.duration || 0;
+    setShowText(true);
+    return;
+  }
 
-    // Check immediately in case metadata already loaded before this ran
-    // (common with cached video, e.g. after a 304 Not Modified response).
-    if (video.readyState >= 1) {
-      setVideoReady(true);
-    }
+  if (video.readyState >= 1) {
+    setVideoReady(true);
+  }
 
-    const onLoaded = () => setVideoReady(true);
-    video.addEventListener("loadedmetadata", onLoaded);
+  // iOS Safari won't paint a frame from programmatic currentTime changes
+  // until playback has actually started once. Nudge it with a silent
+  // play/pause so the video "wakes up" and shows its first frame.
+  const wakeIOS = () => {
+    video.play()
+      .then(() => video.pause())
+      .catch(() => {
+        // Autoplay was blocked — harmless here since we don't need
+        // actual playback, only a decoded frame for scrubbing.
+      });
+  };
 
-    const trigger = ScrollTrigger.create({
-      trigger: pinRef.current,
-      start: "top top",
-      end: "+=250%",
-      pin: true,
-      scrub: 0.5,
-      onUpdate: (self) => {
-        setShowHint(self.progress < 0.03);
-        setShowText(self.progress > 0.92);
-        if (video.duration) {
-          video.currentTime = self.progress * video.duration;
-        }
-      },
-    });
+  const onLoaded = () => {
+    setVideoReady(true);
+    wakeIOS();
+  };
+  video.addEventListener("loadedmetadata", onLoaded);
 
-    return () => {
-      trigger.kill();
-      video.removeEventListener("loadedmetadata", onLoaded);
-    };
-  }, [reducedMotion]);
+  // If metadata already loaded (e.g. cached), still nudge it.
+  if (video.readyState >= 1) {
+    wakeIOS();
+  }
+
+  const trigger = ScrollTrigger.create({
+    trigger: pinRef.current,
+    start: "top top",
+    end: "+=250%",
+    pin: true,
+    scrub: 0.5,
+    onUpdate: (self) => {
+      setShowHint(self.progress < 0.03);
+      setShowText(self.progress > 0.92);
+      if (video.duration) {
+        video.currentTime = self.progress * video.duration;
+      }
+    },
+  });
+
+  return () => {
+    trigger.kill();
+    video.removeEventListener("loadedmetadata", onLoaded);
+  };
+}, [reducedMotion]);
 
   return (
     <section ref={pinRef} className="relative h-screen w-full overflow-hidden bg-[#05070a]">
