@@ -93,15 +93,13 @@ export default function ImageBackgroundHero() {
     >
       {/* Base image — always present */}
       <div
-        ref={imageRef}
-        className="absolute inset-0 h-full w-full"
-        style={{
-          backgroundImage: "url('/hero-bg.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          willChange: "transform",
-        }}
-      />
+  ref={imageRef}
+  className="absolute inset-0 h-full w-full bg-cover bg-[position:78%_center] md:bg-center"
+  style={{
+    backgroundImage: "url('/hero-bg.png')",
+    willChange: "transform",
+  }}
+/>
 
       {/* Alt image — fades in over the base image on hover */}
       <div
