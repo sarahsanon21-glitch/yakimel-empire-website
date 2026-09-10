@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
-import { Play } from "lucide-react";
 
 export default function Expertise() {
   const sectionRef = useRef(null);
@@ -36,13 +35,6 @@ export default function Expertise() {
             />
 
             <div className="pointer-events-none absolute inset-0 bg-black/30 transition-colors duration-300 group-hover:bg-black/45" />
-
-            <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#4d8dff] transition-transform duration-300 group-hover:scale-110">
-                <Play size={28} className="ml-1 fill-white text-white" />
-              </div>
-            </div>
-
             <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-black/70 to-transparent px-6 py-5">
               <span className="font-mono text-xs uppercase tracking-widest text-white">
                 Explore Our Website Template
