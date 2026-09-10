@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import ServiceWorlds from "@/components/ServiceWorlds";
 import ProductGrid from "@/components/ProductGrid";
 import About from "@/components/About";
 import MissionVision from "@/components/MissionVision";
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <ServiceWorlds />
       <ProductGrid />
       <About />
       <MissionVision />
