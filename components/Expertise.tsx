@@ -1,48 +1,106 @@
-const areas = [
-  {
-    name: "Software Development",
-    description: "We design and develop applications, platforms, and digital systems tailored to specific business and user needs, prioritizing modern architecture, scalability, performance, and user experience.",
-  },
-  {
-    name: "Artificial Intelligence",
-    description: "We explore AI applications in automation, data analysis, intelligent assistants, and process optimization, turning AI into practical and valuable solutions.",
-  },
-  {
-    name: "Digital Solutions",
-    description: "We develop solutions designed to modernize processes, improve productivity, and create new digital experiences, combining technology, simplicity, and performance.",
-  },
-  {
-    name: "Digital Transformation",
-    description: "We support organizations seeking to integrate more technology into their operations, identifying opportunities and contributing to their implementation.",
-  },
-  {
-    name: "Research & Innovation",
-    description: "We study emerging technologies, evolving trends, and new digital models in order to identify the opportunities of tomorrow.",
-  },
-];
+"use client";
+
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import Link from "next/link";
+import { Play } from "lucide-react";
 
 export default function Expertise() {
-  return (
-    <section className="bg-slate-50 py-24 px-6">
-      <div className="mx-auto max-w-6xl">
-        <p className="font-mono text-xs uppercase tracking-widest text-brand mb-3">
-          Our Areas of Expertise
-        </p>
-        <h2 className="font-display font-bold text-3xl md:text-4xl mb-12 text-ink">
-          Where we focus our work
-        </h2>
+  const sectionRef = useRef(null);
+  const inView = useInView(sectionRef, { once: true, margin: "-10% 0px" });
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {areas.map((a) => (
-            <div key={a.name} className="bg-white rounded-2xl border border-slate-200 p-7">
-              <h3 className="font-display font-bold text-lg mb-3 text-ink">
-                {a.name}
-              </h3>
-              <p className="text-dim text-sm leading-relaxed">
-                {a.description}
-              </p>
+  return (
+    <section
+      ref={sectionRef}
+      className="bg-[#050505] px-6 py-32 md:px-16"
+    >
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-14 md:flex-row md:items-center md:gap-16">
+        {/* Video preview — links to /templates */}
+        <motion.div
+          initial={{ opacity: 0, y: 20, scale: 0.97 }}
+          animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="w-full md:w-1/2"
+        >
+          <Link
+            href="/templates"
+            className="group relative block overflow-hidden rounded-2xl border border-[#1b2436]"
+          >
+            <video
+              src="/expertise-preview.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="h-auto w-full object-cover"
+            />
+
+            <div className="pointer-events-none absolute inset-0 bg-black/30 transition-colors duration-300 group-hover:bg-black/45" />
+
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#4d8dff] transition-transform duration-300 group-hover:scale-110">
+                <Play size={28} className="ml-1 fill-white text-white" />
+              </div>
             </div>
-          ))}
+
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-black/70 to-transparent px-6 py-5">
+              <span className="font-mono text-xs uppercase tracking-widest text-white">
+                Explore Our Website Template
+              </span>
+              <span className="font-mono text-xs uppercase tracking-widest text-[#7f93b8] group-hover:text-white">
+                →
+              </span>
+            </div>
+          </Link>
+        </motion.div>
+
+        {/* Text beside the video */}
+        <div className="w-full md:w-1/2">
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+            className="mb-4 font-mono text-xs uppercase tracking-widest text-[#4d8dff]"
+          >
+            Built For Real Business
+          </motion.p>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.22 }}
+            className="mb-6 font-display text-3xl font-bold leading-tight text-[#eef1f6] md:text-4xl"
+          >
+            Your website. Your control.
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+            className="mb-8 text-base leading-relaxed text-[#a2adc4]"
+          >
+            Every website we build comes with a private admin dashboard
+            built for you, not a template you're locked out of. Track
+            incoming orders in real time, manage your menu or product
+            catalog, update prices, and see everything happening on your
+            site without ever touching code. No third-party platform
+            fees. No waiting on us for every small change. Just log in,
+            and run your business.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.38 }}
+          >
+            <Link
+              href="/consultation"
+              className="inline-block rounded-full bg-[#4d8dff] px-8 py-3.5 font-mono text-xs uppercase tracking-widest text-white transition-colors hover:bg-[#3a7ae8]"
+            >
+              Start Your Project
+            </Link>
+          </motion.div>
         </div>
       </div>
     </section>
