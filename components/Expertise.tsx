@@ -82,17 +82,17 @@ export default function Expertise() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.38 }}
-          >
-            <Link
-              href="/consultation"
-              className="inline-block rounded-full bg-[#4d8dff] px-8 py-3.5 font-mono text-xs uppercase tracking-widest text-white transition-colors hover:bg-[#3a7ae8]"
-            >
-              Start Your Project
-            </Link>
-          </motion.div>
+  initial={{ opacity: 0, y: 14 }}
+  animate={inView ? { opacity: 1, y: 0 } : {}}
+  transition={{ duration: 0.6, ease: "easeOut", delay: 0.38 }}
+>
+  <Link
+    href="/templates"
+    className="inline-block rounded-full bg-[#4d8dff] px-8 py-3.5 font-mono text-xs uppercase tracking-widest text-white transition-colors hover:bg-[#3a7ae8]"
+  >
+    Browse Templates
+  </Link>
+</motion.div>
         </div>
       </div>
     </section>
